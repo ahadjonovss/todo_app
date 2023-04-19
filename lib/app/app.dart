@@ -6,7 +6,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return  const MyApp();
+    return  MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => TabBoxBloc(),),
+
+      ],
+        child: const MyApp());
   }
 }
 
