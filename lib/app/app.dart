@@ -20,12 +20,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      initialRoute: RouteName.splash,
-      onGenerateRoute: AppRoutes.generateRoute,
-      debugShowCheckedModeBanner: false,
+    return ScreenUtilInit(
+      designSize: const Size(430, 932),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (BuildContext context, Widget? child) {
+        return const MaterialApp(
+          initialRoute: RouteName.splash,
+          onGenerateRoute: AppRoutes.generateRoute,
+          debugShowCheckedModeBanner: false,
 
-      title: 'ToDo App',
+          title: 'ToDo App',
+        );
+      },
+
     );
   }
 }
