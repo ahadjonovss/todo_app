@@ -1,4 +1,6 @@
+import 'package:todo_app/utils/constants/app_images.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
+import 'package:todo_app/utils/tools/mediaquary.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -20,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    goNext();
+     goNext();
   }
 
   void goNext() {
@@ -37,16 +39,14 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:  [
-              //Text("Bookmeri",style: TextStyle(fontFamily:"Inter",fontSize: 36.sp, fontWeight: FontWeight.w600, color: AppColors.cWhite),),
-
+              Image.asset(AppImages.appLogo,width: width(context)*0.5,),
             ],
           ),
         ),
