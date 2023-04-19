@@ -8,6 +8,7 @@ class AppNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TabBoxBloc,TabBoxState>(
       builder: (context, state) => BottomNavigationBar(
+        elevation: 0,
         currentIndex: state.index,
           selectedItemColor: Colors.blue,
           unselectedItemColor:Colors.grey ,

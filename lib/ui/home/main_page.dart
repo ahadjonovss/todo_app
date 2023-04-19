@@ -10,6 +10,14 @@ class MainPage extends StatelessWidget {
       TasksPage()
     ];
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        backgroundColor: AppColors.cF857C3,
+        child: Icon(Icons.add,color: Colors.white,),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: BlocBuilder<TabBoxBloc,TabBoxState>(
         builder: (context, state) => pages[state.index],
       ),
