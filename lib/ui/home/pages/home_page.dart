@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: height(context)*0.15,
+              height: height(context)*0.3,
               width: width(context),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -29,21 +29,35 @@ class HomePage extends StatelessWidget {
                     right: 0,
                       child: Image.asset(AppImages.corner2,width: 80.h)),
                   Positioned(
-                    left: 20,
-                    bottom: 40,
-                      child: Text("Hello",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 22),)),
-                  Positioned(
-                    left: 20,
-                    bottom: 18,
-                      child: Text("Today you have 9 tasks",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 18),)),
-                ],
-              ),
+                    top: 80.h,
+                      left: 20.h,
+                      right: 20.h,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Hello",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 22),),
+                      Text("Today you have 9 tasks",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 18),),
+                      SizedBox(height: height(context)*0.02,),
+                      Container(
+                        height: height(context)*0.12,
+                        width: width(context),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white.withOpacity(0.31)
 
+                        ),
+                      )
+                    ],
+                  )),
+
+
+
+                ]
             )
-
-          ],
         ),
-      ),
+      ],
+    ),
+    ),
     );
   }
 }
