@@ -1,20 +1,15 @@
-import 'dart:ui';
+import '../tools/file_importer.dart';
 
 class AppColors{
-  static const c010349 = Color(0xFF010349);
-  static const c014380 = Color(0xFF014380);
-  static const c006ED1 = Color(0xFF006ED1);
-  static const c007AAF = Color(0xFF007AAF);
-  static const cFF3333 = Color(0xFFFF3333);
-  static const c004380 = Color(0xFF004380);
-  static const c000348 = Color(0xFF000348);
-  static const cWhite = Color(0xFFFFFFFF);
-  static const cBlack = Color(0xFF000000);
-  static const cA159C2 = Color(0xFFA159C2);
-  static const cE8E9EA = Color(0xFFE8E9EA);
-  static const cAFAFAF = Color(0xFFAFAFAF);
-  static const cD3D3D3 = Color(0xFFD3D3D3);
-  static const cADADAD = Color(0xFFADADAD);
-  static const cF0F1F3 = Color(0xFFF0F1F3);
+  static const c5DE61A=Color(0xFF5DE61A);
+  static const c39A801 =Color(0xFF39A801);
+  static const c554E8F =Color(0xFF554E8F);
+  static const cE0139C =Color(0xFFE0139C);
+  static const yellow =Color(0xFFFFD506);
+  static const green =Color(0xFF1ED102);
+  static const red =Color(0xFFD10263);
+  static const blue =Color(0xFF3044F2);
+  static const orange =Color(0xFFF29130);
+
 
 }
