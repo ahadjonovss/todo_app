@@ -29,4 +29,7 @@ export 'package:todo_app/data/models/task_model.dart';
 export 'package:todo_app/data/repositories/splash_repository.dart';
 export 'package:todo_app/data/repositories/task_repository.dart';
 export 'package:path_provider/path_provider.dart';
+export 'package:flutter_svg/flutter_svg.dart';
+export 'package:todo_app/utils/constants/app_icons.dart';
+export 'package:todo_app/ui/home/widgets/custom_app_bar.dart';
 
