@@ -1,3 +1,5 @@
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:todo_app/utils/constants/app_icons.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,11 +43,37 @@ class HomePage extends StatelessWidget {
                       Container(
                         height: height(context)*0.12,
                         width: width(context),
+                        padding: EdgeInsets.all(20.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white.withOpacity(0.31)
 
                         ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Today Reminder",style: AppTextStyles.headlineLarge(context,color: Colors.white),),
+                                Text("Meeting with client",style: AppTextStyles.headlineMediumBold(context,color: Colors.white),),
+                                Text("13.00 PM",style: AppTextStyles.headlineSmall(context,color: Colors.white),),
+
+                              ],
+                            ),
+                            Stack(
+                              children: [
+                               Positioned(
+                                   right: 0,
+                                   child: SvgPicture.asset(AppIcons.close),
+                               ),
+                               SvgPicture.asset(AppIcons.bell),
+
+                              ],
+                            )
+                          ],
+                        )
                       )
                     ],
                   )),
