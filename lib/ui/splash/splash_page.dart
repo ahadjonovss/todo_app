@@ -1,6 +1,4 @@
-import 'package:todo_app/utils/constants/app_images.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
-import 'package:todo_app/utils/tools/mediaquary.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -10,18 +8,9 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  // bool isLog = false;
-  //
-  // Future<bool> isLoggedIn() async {
-  //   SharedPreferences pref = await SharedPreferences.getInstance();
-  //   isLog = pref.getBool("isLoggedIn") ?? false;
-  //   return pref.getBool("isLoggedIn") ?? false;
-  // }
-
   @override
   void initState() {
     super.initState();
-
      goNext();
   }
 
@@ -29,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(const Duration(seconds: 3)).then(
           (value) {
         Navigator.pushReplacementNamed(
-          context, getIt<SplashRepository>().isLoggedIn()!=null ? RouteName.main : RouteName.onBoarding
+          context, getIt<SplashRepository>().isLoggedIn()==true ? RouteName.main : RouteName.onBoarding
         );
       },
     );

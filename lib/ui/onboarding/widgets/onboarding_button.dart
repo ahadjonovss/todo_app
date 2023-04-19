@@ -8,6 +8,7 @@ class OnBoardingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
       onTap: () {
+        getIt<SplashRepository>().register();
         Navigator.pushNamedAndRemoveUntil(context, RouteName.main, (route) => false);
       },
       child: Container(
