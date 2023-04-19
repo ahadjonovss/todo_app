@@ -13,22 +13,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children:   [
             const CustomAppBar(),
-            Container(
-              width: width(context),
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Today",style: AppTextStyles.headlineMedium(context),),
-                  ListView(
-                    shrinkWrap: true,
-                    children: [
-                      ...List.generate(5, (index) => TaskItem())
-                    ],
-                  )
-                ],
-              ),
-            )
+
 
       ],
     ),
