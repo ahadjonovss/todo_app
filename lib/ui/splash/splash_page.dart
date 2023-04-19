@@ -30,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
           (value) {
         Navigator.pushReplacementNamed(
           // context, isLog ? RouteName.mainPage : RouteName.signIn
-            context,RouteName.main
+            context,RouteName.onBoarding
         );
       },
     );
