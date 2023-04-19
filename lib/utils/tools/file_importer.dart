@@ -24,3 +24,7 @@ export 'package:todo_app/utils/tools/mediaquary.dart';
 export 'package:todo_app/utils/constants/app_colors.dart';
 export 'package:todo_app/utils/constants/app_text_styles.dart';
 export 'package:todo_app/ui/onboarding/widgets/onboarding_button.dart';
+export 'package:hive/hive.dart';
+export 'package:todo_app/data/models/task_model.dart';
+export 'package:todo_app/data/repositories/splash_repository.dart';
+export 'package:todo_app/data/repositories/task_repository.dart';
