@@ -10,5 +10,7 @@ class AppIcons{
   static const shopping = '${iconPath}shopping.svg';
   static const study = '${iconPath}study.svg';
   static const work = '${iconPath}work.svg';
+  static const notificationOff = '${iconPath}notification_off.svg';
+  static const notificationOn = '${iconPath}notification_on.svg';
 
 }
