@@ -8,7 +8,7 @@ class TaskItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(4.0)),
       child: Container(
-        margin: EdgeInsets.only(top: 16.h),
+        margin: EdgeInsets.only(bottom: 16.h),
         alignment: Alignment.center,
         padding: const EdgeInsets.only(left: 4,right: 10),
         height: height(context)*0.06,

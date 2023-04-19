@@ -20,11 +20,12 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Today",style: AppTextStyles.headlineMedium(context),),
-                  ListView.builder(
+                  ListView(
                     shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: (context, index) => TaskItem(),)
-
+                    children: [
+                      ...List.generate(5, (index) => TaskItem())
+                    ],
+                  )
                 ],
               ),
             )
