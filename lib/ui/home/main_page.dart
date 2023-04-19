@@ -1,3 +1,4 @@
+import 'package:todo_app/ui/home/widgets/arc.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class MainPage extends StatelessWidget {
@@ -12,10 +13,29 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          showModalBottomSheet(
+            backgroundColor: Colors.transparent,
+            context: context, builder: (context) => Stack(
+            clipBehavior: Clip.none,
+            children: [
+              CustomPaint( //                       <-- CustomPaint widget
+              size: Size(width(context), width(context)),
+            painter: MyPainter(),
+          ),
+              Positioned(
+                top: 120,
+                child: Container(
+                  height: width(context)*0.7,
+                  width: width(context),
+                  color: Colors.white,
+                ),
+              )
+            ],
+          ));
 
         },
         backgroundColor: AppColors.cF857C3,
-        child: Icon(Icons.add,color: Colors.white,),
+        child: const Icon(Icons.add,color: Colors.white,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: BlocBuilder<TabBoxBloc,TabBoxState>(
