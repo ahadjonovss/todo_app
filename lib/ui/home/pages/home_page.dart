@@ -1,4 +1,5 @@
 
+import 'package:todo_app/ui/home/widgets/tasks_view.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children:   [
             const CustomAppBar(),
+            TasksView()
 
 
       ],
