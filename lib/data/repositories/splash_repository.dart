@@ -13,7 +13,7 @@ class SplashRepository{
   }
 
   bool? isLoggedIn() {
-    return _box.get('isLoggedIn',defaultValue: false);
+    return _box.get('isLoggedIn');
   }
 
 
