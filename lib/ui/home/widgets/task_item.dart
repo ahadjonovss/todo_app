@@ -11,7 +11,9 @@ class TaskItem extends StatelessWidget {
     CategoryModel category = detectCategory(task.category);
     return ZoomTapAnimation(
       onLongTap: () {
-        showCupertinoDialog(context: context, builder: (context) => UpdateTaskDialog(task: task),);
+        showCupertinoDialog(context: context, builder: (context) => CustomDialog(task: task.title,title: task.isFinished?"Have not finished this task?":"Have you finished this task?",onYesTapped: () {
+          context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));
+        },),);
       },
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(4.0)),
@@ -50,7 +52,13 @@ class TaskItem extends StatelessWidget {
                 width: width(context)*0.5,
                 child: Text(task.title,style: AppTextStyles.headlineLarge(context,color: AppColors.c554E8F,fontWeight: FontWeight.w600,fontSize: 16),),
               ),
-              SvgPicture.asset(AppIcons.notificationOff,width: 20.h,)
+              ZoomTapAnimation(
+                onTap: () {
+                  showCupertinoDialog(context: context, builder: (context) => CustomDialog(title: task.mustNotify?"Are you going to turn off notification for this task?":"Are you going to turn on notification for this task?", onYesTapped: () {
+                    context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(mustNotify: task.mustNotify?false:true)));
+                  }, task: task.title));
+                },
+                  child: SvgPicture.asset(task.mustNotify?AppIcons.notificationOn:AppIcons.notificationOff,width: 20.h,))
             ],
           ),
         ),

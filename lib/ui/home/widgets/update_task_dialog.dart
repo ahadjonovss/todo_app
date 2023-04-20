@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
-class UpdateTaskDialog extends StatelessWidget {
-  TaskModel task;
-  UpdateTaskDialog({required this.task,Key? key}) : super(key: key);
+class CustomDialog extends StatelessWidget {
+  String title;
+  String task;
+  VoidCallback onYesTapped;
+
+  CustomDialog({required this.title,required this.onYesTapped,required this.task,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +17,8 @@ class UpdateTaskDialog extends StatelessWidget {
         }
       },
       child: CupertinoAlertDialog(
-        title:  Text(task.isFinished?"Have not finished this task?":"Have you finished this task?"),
-        content: Text(task.title),
+        title:  Text(title),
+        content: Text(task),
         actions: [
           CupertinoDialogAction(
             child: const Text("No"),
@@ -24,11 +27,8 @@ class UpdateTaskDialog extends StatelessWidget {
             },
           ),
           CupertinoDialogAction(
-            child: const Text("Yes"),
-            onPressed: () {
-
-              context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));
-            },
+            onPressed: onYesTapped,
+            child:  const Text("Yes"),
           ),
 
         ],
@@ -36,3 +36,5 @@ class UpdateTaskDialog extends StatelessWidget {
     );
   }
 }
+//task.isFinished?"Have not finished this task?":"Have you finished this task?"
+//              context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));
