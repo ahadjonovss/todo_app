@@ -36,5 +36,7 @@ export 'package:todo_app/ui/home/widgets/task_item.dart';
 export 'package:todo_app/ui/home/sub_screens/add_task/widgets/arc.dart';
 export 'package:todo_app/ui/home/sub_screens/add_task/add_task_widget.dart';
 export 'package:todo_app/data/models/category_model.dart';
+export 'package:todo_app/ui/home/sub_screens/add_task/widgets/category_item.dart';
+export 'package:todo_app/bloc/add_task_bloc/add_task_bloc.dart';
 
 

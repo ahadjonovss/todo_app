@@ -1,5 +1,3 @@
-import 'package:todo_app/data/models/category_model.dart';
-import 'package:todo_app/ui/home/sub_screens/add_task/widgets/category_item.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -7,7 +5,11 @@ class AddTaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Stack(
+    return  BlocProvider(
+  create: (context) => AddTaskBloc(),
+  child: BlocBuilder<AddTaskBloc, AddTaskState>(
+  builder: (context, state) {
+    return Stack(
       clipBehavior: Clip.none,
       children: [
         CustomPaint( //                       <-- CustomPaint widget
@@ -65,7 +67,7 @@ class AddTaskWidget extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    ...List.generate(categories.length, (index) => CategoryItem(category: categories[index],isSelected: false,))
+                    ...List.generate(categories.length, (index) => CategoryItem(category: categories[index],isSelected: state.newTask.category==categories[index].title,))
                   ],
                 ),
               )
@@ -75,5 +77,8 @@ class AddTaskWidget extends StatelessWidget {
         )
       ],
     );
+  },
+),
+);
   }
 }
