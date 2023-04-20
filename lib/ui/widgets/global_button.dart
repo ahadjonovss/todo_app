@@ -13,7 +13,6 @@ class GlobalButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.symmetric(horizontal: width(context)*0.15),
         height: height(context)*0.07,
         width: width(context),
         decoration:  BoxDecoration(

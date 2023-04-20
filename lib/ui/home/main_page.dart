@@ -14,6 +14,9 @@ class MainPage extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             backgroundColor: Colors.transparent,
+            constraints: BoxConstraints(
+              minHeight: height(context)*0.7
+            ),
             context: context, builder: (context) => AddTaskWidget());
 
         },

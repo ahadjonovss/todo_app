@@ -40,6 +40,7 @@ export 'package:todo_app/ui/home/sub_screens/add_task/widgets/category_item.dart
 export 'package:todo_app/bloc/add_task_bloc/add_task_bloc.dart';
 export 'package:todo_app/ui/home/sub_screens/add_task/widgets/categories_view.dart';
 export 'package:todo_app/ui/home/sub_screens/add_task/widgets/close_button.dart';
+export 'package:todo_app/ui/home/sub_screens/add_task/widgets/choose_date_item.dart';
 
 
 

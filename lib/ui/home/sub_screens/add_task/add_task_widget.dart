@@ -1,4 +1,3 @@
-import 'package:todo_app/ui/home/sub_screens/add_task/widgets/choose_date_item.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -20,7 +19,7 @@ class AddTaskWidget extends StatelessWidget {
               Positioned(
                 top: 120,
                 child: Container(
-                  height: width(context) * 0.7,
+                  height: height(context) * 0.8,
                   width: width(context),
                   color: Colors.white),
               ),
@@ -49,6 +48,12 @@ class AddTaskWidget extends StatelessWidget {
                     const Divider(color: AppColors.cCFCFCF),
                     SizedBox(height: height(context) * 0.02),
                     const ChooseDateItem(),
+                    SizedBox(height: height(context) * 0.05),
+                    GlobalButton(title: "Add task", onTap:() {
+                    }, gradient:const  [
+                      AppColors.c7EB6FF,
+                      AppColors.c5F87E7,
+                    ])
 
                   ],
                 ),
