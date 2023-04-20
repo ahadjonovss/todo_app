@@ -27,7 +27,6 @@ class TaskRepository{
   _box.delete(id);
   }
 
-
   int getDifference(TaskModel item){
     DateTime dateTime = DateTime.now();
 
