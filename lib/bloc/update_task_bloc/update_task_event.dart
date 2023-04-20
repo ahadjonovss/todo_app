@@ -17,4 +17,8 @@ class UpdateTaskInfoEvent extends UpdateTaskEvent{
   });
 }
 
-class AddCurrentTaskEvent extends UpdateTaskEvent{}
+class UpdateInfoOfCurrentTaskEvent extends UpdateTaskEvent{
+  TaskModel item;
+
+  UpdateInfoOfCurrentTaskEvent(this.item);
+}

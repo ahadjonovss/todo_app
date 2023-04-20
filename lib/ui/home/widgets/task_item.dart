@@ -21,6 +21,8 @@ class TaskItem extends StatelessWidget {
          SizedBox(width: width(context)*0.04,),
           ZoomTapAnimation(
             onTap: () {
+              TextEditingController controller = TextEditingController();
+              controller.text=task.title;
               context.read<UpdateTaskBloc>().add(UpdateTaskInfoEvent(
                 time: task.time,
                 type: task.category,));
@@ -34,7 +36,7 @@ class TaskItem extends StatelessWidget {
                   ),
                   context: context, builder: (context) => Padding(
                 padding:EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child:  UpdateTaskBottomSheet(task: task),
+                child:  UpdateTaskBottomSheet(task: task,controller: controller),
               ));
             },
             child: Container(

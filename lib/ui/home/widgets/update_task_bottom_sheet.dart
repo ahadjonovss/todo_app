@@ -3,12 +3,12 @@ import 'package:todo_app/utils/tools/file_importer.dart';
 
 class UpdateTaskBottomSheet extends StatelessWidget {
   TaskModel task;
-   UpdateTaskBottomSheet({required this.task,Key? key}) : super(key: key);
+  TextEditingController controller;
+   UpdateTaskBottomSheet({required this.controller,required this.task,Key? key}) : super(key: key);
 
-   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    controller.text=task.title;
+
     return BlocBuilder<UpdateTaskBloc, UpdateTaskState>(
   builder: (context, state) {
     return Stack(
@@ -57,9 +57,8 @@ class UpdateTaskBottomSheet extends StatelessWidget {
                 SizedBox(height: height(context) * 0.06),
                 GlobalButton(title: "Add task", onTap:() {
                   Navigator.pop(context);
-                  //context.read<AddTaskBloc>().add(AddCurrentTaskEvent());
+                  context.read<UpdateTaskBloc>().add(UpdateInfoOfCurrentTaskEvent(state.newTask));
                   context.read<TasksBloc>().add(GetAllTasks());
-
                 }, gradient:const  [
                   AppColors.c7EB6FF,
                   AppColors.c5F87E7,
