@@ -67,7 +67,13 @@ class AddTaskWidget extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    ...List.generate(categories.length, (index) => CategoryItem(category: categories[index],isSelected: state.newTask.category==categories[index].title,))
+                    ...List.generate(categories.length, (index) =>
+                        ZoomTapAnimation(
+                          onTap: () {
+                            context.read<AddTaskBloc>().add(UpdateTaskEvent(type: categories[index].title));
+                          },
+                            child:
+                        CategoryItem(category: categories[index],isSelected: state.newTask.category==categories[index].title,)))
                   ],
                 ),
               )

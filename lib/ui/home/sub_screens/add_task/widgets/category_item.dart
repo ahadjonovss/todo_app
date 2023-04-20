@@ -7,7 +7,8 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const  Duration(seconds: 1),
       margin: const EdgeInsets.only(right: 6),
       padding:const  EdgeInsets.all(6),
       decoration: BoxDecoration(
@@ -16,6 +17,7 @@ class CategoryItem extends StatelessWidget {
       ),
       child: Row(
         children: [
+          if(!isSelected)
           PhysicalModel(
             shape: BoxShape.circle,
             color: category.color,
@@ -24,7 +26,8 @@ class CategoryItem extends StatelessWidget {
               width: 10.0,
             ),
           ),
-          const SizedBox(width: 8,),
+          if(!isSelected)
+            const SizedBox(width: 8,),
           Text(category.title,style: AppTextStyles.headlineSmall(context,color: isSelected?Colors.white:Colors.grey,fontSize: 16),)
         ],
       ),
