@@ -33,15 +33,17 @@ class TaskItem extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
+              AnimatedContainer(
+                duration: const Duration(seconds: 1),
                 height: height(context)*0.024,
                 width: height(context)*0.024,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                        color: Colors.grey
+                        color: task.isFinished?Colors.green:Colors.grey
                     )
                 ),
+                child: task.isFinished?Image.asset(AppImages.done):null,
               ),
               Text(getTime(task.time),style: AppTextStyles.headlineSmall(context,color: Colors.grey,fontSize: 14),),
               SizedBox(
