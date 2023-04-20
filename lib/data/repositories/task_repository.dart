@@ -1,3 +1,4 @@
+import 'package:todo_app/data/models/my_response.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class TaskRepository{
@@ -15,8 +16,14 @@ class TaskRepository{
 
   }
 
-  List<TaskModel> getItems() {
-  return _box.values.toList();
+  MyResponse getItems() {
+    MyResponse myResponse = MyResponse();
+    try{
+      myResponse.tasks = _box.values.toList();
+    }catch(e){
+      myResponse.errorMessage=e.toString();
+    }
+    return myResponse;
   }
 
   void updateItem(TaskModel item) {

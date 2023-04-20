@@ -4,5 +4,5 @@ class MyResponse{
   String errorMessage;
   List<TaskModel> tasks;
 
-  MyResponse({required this.tasks,required this.errorMessage});
+  MyResponse({ this.tasks=const [], this.errorMessage=''});
 }
