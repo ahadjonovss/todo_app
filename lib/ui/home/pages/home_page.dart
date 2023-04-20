@@ -11,14 +11,16 @@ class HomePage extends StatelessWidget {
       body: SizedBox(
         height: height(context),
         width: width(context),
-        child: Column(
-          children:   [
-            const CustomAppBar(),
-            TasksView()
+        child: SingleChildScrollView(
+          child: Column(
+            children:  const  [
+               CustomAppBar(),
+              TasksView()
 
 
       ],
     ),
+        ),
     ),
     );
   }

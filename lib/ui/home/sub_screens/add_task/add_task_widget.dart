@@ -38,6 +38,9 @@ class AddTaskWidget extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           width: width(context),
                           child: TextField(
+                            onChanged: (value) {
+                              context.read<AddTaskBloc>().add(UpdateTaskEvent(title: value));
+                            },
                             style: AppTextStyles.headlineLarge(context,
                                 color: AppColors.c373737),
                             decoration: const InputDecoration(
@@ -50,6 +53,7 @@ class AddTaskWidget extends StatelessWidget {
                       const ChooseDateItem(),
                       SizedBox(height: height(context) * 0.06),
                       GlobalButton(title: "Add task", onTap:() {
+
                       }, gradient:const  [
                         AppColors.c7EB6FF,
                         AppColors.c5F87E7,
