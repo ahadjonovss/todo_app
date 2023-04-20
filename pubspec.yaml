@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.5
   path_provider: ^2.0.14
   flutter_local_notifications: ^13.0.0
+  flutter_slidable: ^3.0.0
 
 dev_dependencies:
   flutter_test:

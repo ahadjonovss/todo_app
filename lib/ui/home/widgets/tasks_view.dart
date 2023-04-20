@@ -7,6 +7,7 @@ class TasksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       width: width(context),
       padding: const EdgeInsets.all(20.0),
       child: Column(

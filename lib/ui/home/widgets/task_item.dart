@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class TaskItem extends StatelessWidget {
@@ -9,20 +10,51 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CategoryModel category = detectCategory(task.category);
-    return ZoomTapAnimation(
-      onLongTap: () {
-        showCupertinoDialog(context: context, builder: (context) => CustomDialog(task: task.title,title: task.isFinished?"Have not finished this task?":"Have you finished this task?",onYesTapped: () {
-          context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));
-        },),);
-      },
-      child: CupertinoPopupSurface(
+    return Slidable(
+      key: const ValueKey(0),
+      endActionPane:  ActionPane(
+        extentRatio: 0.3,
+        motion: const ScrollMotion(),
+        children: [
+         SizedBox(width: width(context)*0.04,),
+          Container(
+            height: height(context)*0.05,
+            alignment: Alignment.center,
+            width: height(context)*0.05,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0xFFC4CEF5)
+            ),
+            child: SvgPicture.asset(AppIcons.edit,fit: BoxFit.cover,),
+          ),
+          SizedBox(width: width(context)*0.01,),
+          Container(
+            height: height(context)*0.05,
+            alignment: Alignment.center,
+            width: height(context)*0.05,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0xFFFFCFCF)
+            ),
+            child: SvgPicture.asset(AppIcons.delete,fit: BoxFit.cover,),
+          ),
+        ],
+      ),
+      child: ZoomTapAnimation(
+        onLongTap: () {
+          showCupertinoDialog(context: context, builder: (context) => CustomDialog(task: task.title,title: task.isFinished?"Have not finished this task?":"Have you finished this task?",onYesTapped: () {
+            context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));
+          },),);
+        },
         child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
           child: Container(
             margin: EdgeInsets.only(top: 16.h),
+            constraints: BoxConstraints(
+              minHeight: height(context)*0.07
+            ),
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
-            // height: height(context)*0.06,
             width: width(context),
             decoration:  BoxDecoration(
                 border: Border(

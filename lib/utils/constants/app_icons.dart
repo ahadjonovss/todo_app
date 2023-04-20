@@ -12,5 +12,7 @@ class AppIcons{
   static const work = '${iconPath}work.svg';
   static const notificationOff = '${iconPath}notification_off.svg';
   static const notificationOn = '${iconPath}notification_on.svg';
+  static const delete = '${iconPath}delete.svg';
+  static const edit = '${iconPath}edit.svg';
 
 }
