@@ -9,6 +9,7 @@ class App extends StatelessWidget {
     return  MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => TabBoxBloc(),),
+        BlocProvider(create: (context) => AddTaskBloc(),),
 
       ],
         child: const MyApp());
