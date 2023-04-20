@@ -14,7 +14,7 @@ class UpdateTaskDialog extends StatelessWidget {
         }
       },
       child: CupertinoAlertDialog(
-        title: const Text("Have you finished this task?"),
+        title:  Text(task.isFinished?"Have not finished this task?":"Have you finished this task?"),
         content: Text(task.title),
         actions: [
           CupertinoDialogAction(
@@ -26,7 +26,8 @@ class UpdateTaskDialog extends StatelessWidget {
           CupertinoDialogAction(
             child: const Text("Yes"),
             onPressed: () {
-              context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: true)));
+
+              context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));
             },
           ),
 
