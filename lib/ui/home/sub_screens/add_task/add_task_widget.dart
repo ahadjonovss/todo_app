@@ -14,8 +14,7 @@ class AddTaskWidget extends StatelessWidget {
             children: [
               CustomPaint(
                 size: Size(width(context), width(context)),
-                painter: MyPainter(),
-              ),
+                painter: MyPainter()),
               Positioned(
                 top: 120,
                 child: Container(
@@ -27,35 +26,37 @@ class AddTaskWidget extends StatelessWidget {
                 top: 16,
                 right: 10,
                 left: 10,
-                child: Column(
-                  children: [
-                    const CustomCloseButton(),
-                    SizedBox(height: height(context) * 0.01),
-                    Text("Add new task",
-                      style: AppTextStyles.headlineMedium(context, fontSize: 16.h, color: AppColors.c404040)),
-                    SizedBox(height: height(context) * 0.02),
-                    Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        width: width(context),
-                        child: TextField(
-                          style: AppTextStyles.headlineLarge(context,
-                              color: AppColors.c373737),
-                          decoration: const InputDecoration(
-                              border: InputBorder.none, hintText: "Type..."))),
-                    SizedBox(height: height(context) * 0.01),
-                    const Divider(color: AppColors.cCFCFCF),
-                    const CategoriesView(),
-                    const Divider(color: AppColors.cCFCFCF),
-                    SizedBox(height: height(context) * 0.02),
-                    const ChooseDateItem(),
-                    SizedBox(height: height(context) * 0.05),
-                    GlobalButton(title: "Add task", onTap:() {
-                    }, gradient:const  [
-                      AppColors.c7EB6FF,
-                      AppColors.c5F87E7,
-                    ])
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const CustomCloseButton(),
+                      SizedBox(height: height(context) * 0.01),
+                      Text("Add new task",
+                        style: AppTextStyles.headlineMedium(context, fontSize: 16.h, color: AppColors.c404040)),
+                      SizedBox(height: height(context) * 0.02),
+                      Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          width: width(context),
+                          child: TextField(
+                            style: AppTextStyles.headlineLarge(context,
+                                color: AppColors.c373737),
+                            decoration: const InputDecoration(
+                                border: InputBorder.none, hintText: "Type..."))),
+                      SizedBox(height: height(context) * 0.01),
+                      const Divider(color: AppColors.cCFCFCF),
+                      const CategoriesView(),
+                      const Divider(color: AppColors.cCFCFCF),
+                      SizedBox(height: height(context) * 0.02),
+                      const ChooseDateItem(),
+                      SizedBox(height: height(context) * 0.06),
+                      GlobalButton(title: "Add task", onTap:() {
+                      }, gradient:const  [
+                        AppColors.c7EB6FF,
+                        AppColors.c5F87E7,
+                      ])
 
-                  ],
+                    ],
+                  ),
                 ),
               )
             ],

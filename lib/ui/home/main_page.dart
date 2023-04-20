@@ -14,10 +14,16 @@ class MainPage extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             backgroundColor: Colors.transparent,
+            isDismissible: false,
+            enableDrag: true,
+            isScrollControlled: true,
             constraints: BoxConstraints(
-              minHeight: height(context)*0.7
+              minHeight: height(context)*0.55
             ),
-            context: context, builder: (context) => AddTaskWidget());
+            context: context, builder: (context) => Padding(
+              padding:EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: const AddTaskWidget(),
+            ));
 
         },
         backgroundColor: AppColors.cF857C3,

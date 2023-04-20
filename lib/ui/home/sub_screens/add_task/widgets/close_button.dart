@@ -10,9 +10,9 @@ class CustomCloseButton extends StatelessWidget {
         Navigator.pop(context);
       },
       child: Container(
+        alignment: Alignment.center,
         height: height(context)*0.06,
         width: height(context)*0.06,
-        padding: const EdgeInsets.all(16),
         decoration:const  BoxDecoration(
             shape: BoxShape.circle,
             color: AppColors.cF857C3
