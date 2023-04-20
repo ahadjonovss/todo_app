@@ -1,3 +1,4 @@
+import 'package:todo_app/data/models/category_model.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -55,7 +56,8 @@ class AddTaskWidget extends StatelessWidget {
                 ),
               )),
               SizedBox(height: height(context)*0.02,),
-              const Divider(color: AppColors.cCFCFCF,)
+              const Divider(color: AppColors.cCFCFCF,),
+
             ],
           ),
         )

@@ -23,4 +23,11 @@ class TaskModel {
     "type":type,
     "time":time
   };
+
+  copyWith({
+     int? id,
+     String? title,
+     String? type,
+     DateTime? time
+})=>TaskModel(title: title??this.title, id: id??this.id, type: type??this.type, time: time??this.time);
 }

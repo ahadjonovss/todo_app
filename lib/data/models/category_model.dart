@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class CategoryModel {
