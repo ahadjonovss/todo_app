@@ -4,7 +4,7 @@ part 'add_task_event.dart';
 part 'add_task_state.dart';
 
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
-  AddTaskBloc() : super(AddTaskState(TaskModel(title: '',id: 0,time: TimeOfDay.now(),category: ''))) {
+  AddTaskBloc() : super(AddTaskState(TaskModel(title: '',id: 0,time: TimeOfDay.now(),category: '',day: DateTime.now()))) {
     on<UpdateTaskEvent>(updateTaskInfo);
   }
 
