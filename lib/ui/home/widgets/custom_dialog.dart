@@ -36,5 +36,3 @@ class CustomDialog extends StatelessWidget {
     );
   }
 }
-//task.isFinished?"Have not finished this task?":"Have you finished this task?"
-//              context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));

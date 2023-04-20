@@ -12,7 +12,7 @@ class TaskRepository{
   void addItem(TaskModel item) {
     item.id = _box.values.length+1;
   _box.put(item.id, item);
-  getIt<LocalNotificationService>().scheduleNotification(task: item, delayedTime: getDifference(item));
+   setNotification(item);
 
   }
 
@@ -42,6 +42,14 @@ class TaskRepository{
 
     return timeOnly.difference(dateTime).inSeconds;
 
+  }
+
+  cancelNotification(int id){
+    getIt<LocalNotificationService>().cancelNotificationById(id);
+  }
+
+  setNotification(TaskModel item){
+    getIt<LocalNotificationService>().scheduleNotification(task: item, delayedTime: getDifference(item));
   }
 
 
