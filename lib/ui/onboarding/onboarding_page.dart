@@ -17,7 +17,17 @@ class OnBoardingPage extends StatelessWidget {
             Image.asset(AppImages.appLogo,width: width(context)*0.5,),
             Text("Reminders made simple",style: AppTextStyles.headlineLarge(context),),
             SizedBox(height: height(context)*0.2,),
-            const OnBoardingButton()
+             GlobalButton(
+              onTap: () {
+                getIt<SplashRepository>().register();
+                Navigator.pushNamedAndRemoveUntil(context, RouteName.main, (route) => false);
+              },
+              title: "Get Started",
+              gradient:  [
+                AppColors.c5DE61A,
+                AppColors.c39A801,
+              ],
+            )
           ],
         ),
       ),

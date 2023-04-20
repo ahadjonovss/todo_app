@@ -48,7 +48,8 @@ class AddTaskWidget extends StatelessWidget {
                     const CategoriesView(),
                     const Divider(color: AppColors.cCFCFCF),
                     SizedBox(height: height(context) * 0.02),
-                    const ChooseDateItem()
+                    const ChooseDateItem(),
+
                   ],
                 ),
               )
