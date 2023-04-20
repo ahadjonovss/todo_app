@@ -29,6 +29,21 @@ class MainPage extends StatelessWidget {
                   width: width(context),
                   color: Colors.white,
                 ),
+              ),
+              Positioned(
+                top: 16,
+                right: 10,
+                left: 10,
+                child: Container(
+                  height: height(context)*0.06,
+                  width: height(context)*0.06,
+                  padding: const EdgeInsets.all(16),
+                  decoration:const  BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.cF857C3
+                  ),
+                  child: const Icon(Icons.close,color: Colors.white,),
+                ),
               )
             ],
           ));

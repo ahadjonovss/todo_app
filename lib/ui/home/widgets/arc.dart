@@ -4,7 +4,7 @@ import 'dart:math' as math;
 class MyPainter extends CustomPainter { //         <-- CustomPainter class
   @override
   void paint(Canvas canvas, Size size) {
-    final rect = Rect.fromLTRB(0, 50, 430.h, 200);
+    final rect = Rect.fromLTRB(0, 50, size.width, 200);
     final paint = Paint()
       ..color = Colors.white
       ..style = PaintingStyle.fill
