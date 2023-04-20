@@ -1,5 +1,4 @@
 import '../../../utils/tools/file_importer.dart';
-import 'dart:math' as math;
 
 class MyPainter extends CustomPainter { //         <-- CustomPainter class
   @override

@@ -33,4 +33,7 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:todo_app/utils/constants/app_icons.dart';
 export 'package:todo_app/ui/home/widgets/custom_app_bar.dart';
 export 'package:todo_app/ui/home/widgets/task_item.dart';
+export 'package:todo_app/ui/home/widgets/arc.dart';
+export 'package:todo_app/ui/home/widgets/add_task_widget.dart';
+
 
