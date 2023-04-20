@@ -55,7 +55,7 @@ class AddTaskWidget extends StatelessWidget {
                 ),
               )),
               SizedBox(height: height(context)*0.02,),
-              Divider(color: AppColors.cCFCFCF,)
+              const Divider(color: AppColors.cCFCFCF,)
             ],
           ),
         )
