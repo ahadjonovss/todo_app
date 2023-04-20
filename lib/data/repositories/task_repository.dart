@@ -9,16 +9,9 @@ class TaskRepository{
   }
 
   void addItem(TaskModel item) {
+    item.id = _box.values.length+1;
   _box.put(item.id, item);
-  DateTime dateTime = DateTime.now();
-
-  // DateTime timeOnly = DateTime(dateTime.year, dateTime.month, dateTime.day,
-  //     item.time.hour, item.time.minute);
-
-  // Duration difference = timeOnly.difference(dateTime);
-  // int differenceInSeconds = difference.inSeconds;
-  // print("Manaaa $differenceInSeconds");
-  // getIt<LocalNotificationService>().scheduleNotification(id: item.id, delayedTime: differenceInSeconds);
+  getIt<LocalNotificationService>().scheduleNotification(task: item, delayedTime: getDifference(item));
 
   }
 
@@ -32,6 +25,17 @@ class TaskRepository{
 
   void deleteItem(int id) {
   _box.delete(id);
+  }
+
+
+  int getDifference(TaskModel item){
+    DateTime dateTime = DateTime.now();
+
+    DateTime timeOnly = DateTime(dateTime.year, dateTime.month, dateTime.day,
+        item.time.hour, item.time.minute);
+
+    return timeOnly.difference(dateTime).inSeconds;
+
   }
 
 

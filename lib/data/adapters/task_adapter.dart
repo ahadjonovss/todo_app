@@ -1,6 +1,3 @@
-import 'package:hive/hive.dart';
-import 'package:todo_app/data/models/task_model.dart';
-
 import '../../utils/tools/file_importer.dart';
 
 class TaskAdapter extends TypeAdapter<TaskModel>{
@@ -15,12 +12,16 @@ class TaskAdapter extends TypeAdapter<TaskModel>{
     final hour = reader.readInt();
     final minute = reader.readInt();
     final day = DateTime.parse(reader.readString());
+    final isFinished = reader.readBool();
+    final mustNotify = reader.readBool();
     return TaskModel(
       id: id,
       title: title,
       category: category,
       time: TimeOfDay(hour: hour,minute: minute),
       day: day,
+    isFinished: isFinished,
+    mustNotify: mustNotify
     );
   }
 
@@ -32,6 +33,8 @@ class TaskAdapter extends TypeAdapter<TaskModel>{
     writer.writeInt(obj.time.hour);
     writer.writeInt(obj.time.minute);
     writer.writeString(obj.day.toString());
+    writer.writeBool(obj.isFinished);
+    writer.writeBool(obj.mustNotify);
   }
 
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+import 'package:todo_app/data/models/task_model.dart';
 
 class LocalNotificationService {
   static final LocalNotificationService localNotificationService =
@@ -110,20 +111,22 @@ class LocalNotificationService {
     );
   }
 
-  void scheduleNotification({required int id, required int delayedTime}) async {
+  void scheduleNotification({required TaskModel task, required int delayedTime}) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      id,
-      "scheduleNotification ID:$id",
-      "EXAMPLE",
+      task.id,
+      "Do not forget your task!",
+      task.title,
       tz.TZDateTime.now(tz.local).add(Duration(seconds: delayedTime)),
       NotificationDetails(
         android: AndroidNotificationDetails(
           androidNotificationChannel.id,
           androidNotificationChannel.name,
+          priority: Priority.high,
+          playSound: true,
           channelDescription: 'To remind you about upcoming birthdays',
         ),
       ),
-      payload: "SCHEADULED NOTIFICATION PAYLOAD DATA ID:$id",
+      payload: "SCHEADULED NOTIFICATION PAYLOAD DATA",
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
       UILocalNotificationDateInterpretation.absoluteTime,
