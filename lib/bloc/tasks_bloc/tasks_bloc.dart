@@ -1,4 +1,3 @@
-import 'package:todo_app/data/models/my_response.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 part 'tasks_event.dart';
@@ -24,6 +23,11 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
 
   updateTask(UpdateCurrentTaskEvent event,emit){
     getIt<TaskRepository>().updateItem(event.task);
+    if(event.task.mustNotify){
+      getIt<TaskRepository>().setNotification(event.task);
+    }else{
+      getIt<TaskRepository>().cancelNotification(event.task.id);
+    }
     emit(state.copyWith(status: FormStatus.updated));
     add(GetAllTasks());
   }
