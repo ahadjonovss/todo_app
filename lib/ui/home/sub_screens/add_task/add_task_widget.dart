@@ -1,4 +1,5 @@
 import 'package:todo_app/data/models/category_model.dart';
+import 'package:todo_app/ui/home/sub_screens/add_task/widgets/category_item.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -57,6 +58,17 @@ class AddTaskWidget extends StatelessWidget {
               )),
               SizedBox(height: height(context)*0.02,),
               const Divider(color: AppColors.cCFCFCF,),
+              SizedBox(height: height(context)*0.02,),
+              SizedBox(
+                width: width(context),
+                height: width(context)/10,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    ...List.generate(categories.length, (index) => CategoryItem(category: categories[index],isSelected: false,))
+                  ],
+                ),
+              )
 
             ],
           ),
