@@ -21,8 +21,8 @@ class TaskItem extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(top: 16.h),
             alignment: Alignment.center,
-            padding: const EdgeInsets.only(left: 4,right: 10),
-            height: height(context)*0.06,
+            padding: const EdgeInsets.all(10),
+            // height: height(context)*0.06,
             width: width(context),
             decoration:  BoxDecoration(
                 border: Border(
@@ -34,10 +34,9 @@ class TaskItem extends StatelessWidget {
                 color: Colors.white
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  width: width(context)*0.9,
+                Expanded(
                   child: Row(
                     children: [
                       SizedBox(width: width(context)*0.01,),
@@ -56,7 +55,9 @@ class TaskItem extends StatelessWidget {
                       SizedBox(width: width(context)*0.02,),
                       Text(getTime(task.time),style: AppTextStyles.headlineSmall(context,color: Colors.grey,fontSize: 14.h),),
                       SizedBox(width: width(context)*0.02,),
-                      Text(task.title,style: AppTextStyles.headlineLarge(context,color: AppColors.c554E8F,fontWeight: FontWeight.w600,fontSize: 16.h),),
+                      SizedBox(
+                        width: width(context)*0.6,
+                          child: Text(task.title,style: AppTextStyles.headlineLarge(context,color: AppColors.c554E8F,fontWeight: FontWeight.w600,fontSize: 16.h),)),
 
                     ],
                   ),
@@ -67,7 +68,7 @@ class TaskItem extends StatelessWidget {
                       context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(mustNotify: task.mustNotify?false:true)));
                     }, task: task.title));
                   },
-                    child: SvgPicture.asset(task.mustNotify?AppIcons.notificationOn:AppIcons.notificationOff,width: 20.h,))
+                    child: SvgPicture.asset(task.mustNotify?AppIcons.notificationOn:AppIcons.notificationOff,width: 20.h))
               ],
             ),
           ),
