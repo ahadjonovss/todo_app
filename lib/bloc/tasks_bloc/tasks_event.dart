@@ -8,3 +8,8 @@ class UpdateCurrentTaskEvent extends TasksEvent{
   TaskModel task;
   UpdateCurrentTaskEvent(this.task);
 }
+
+class DeleteTaskEvent extends TasksEvent{
+  int id;
+  DeleteTaskEvent(this.id);
+}

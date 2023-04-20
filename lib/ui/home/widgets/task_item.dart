@@ -13,7 +13,7 @@ class TaskItem extends StatelessWidget {
   Widget build(BuildContext context) {
     CategoryModel category = detectCategory(task.category);
     return Slidable(
-      key: const ValueKey(0),
+      key:  ValueKey(task.id),
       endActionPane:  ActionPane(
         extentRatio: 0.3,
         motion: const ScrollMotion(),
@@ -51,15 +51,24 @@ class TaskItem extends StatelessWidget {
             ),
           ),
           SizedBox(width: width(context)*0.01,),
-          Container(
-            height: height(context)*0.05,
-            alignment: Alignment.center,
-            width: height(context)*0.05,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xFFFFCFCF)
+          ZoomTapAnimation(
+            onTap: () {
+              showCupertinoDialog(context: context, builder: (context) => CustomDialog(
+                  title: "Are you sure to delete this task?", onYesTapped: () {
+                    context.read<TasksBloc>().add(DeleteTaskEvent(task.id));
+
+                  }, task: task.title),);
+            },
+            child: Container(
+              height: height(context)*0.05,
+              alignment: Alignment.center,
+              width: height(context)*0.05,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xFFFFCFCF)
+              ),
+              child: SvgPicture.asset(AppIcons.delete,fit: BoxFit.cover,),
             ),
-            child: SvgPicture.asset(AppIcons.delete,fit: BoxFit.cover,),
           ),
         ],
       ),

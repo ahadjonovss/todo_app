@@ -7,6 +7,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   TasksBloc() : super(TasksState(tasks: [], message: '', status: FormStatus.pure)) {
     on<GetAllTasks>(getAllTasks);
     on<UpdateCurrentTaskEvent>(updateTask);
+    on<DeleteTaskEvent>(deleteTask);
   }
 
 
@@ -28,6 +29,13 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     }else{
       getIt<TaskRepository>().cancelNotification(event.task.id);
     }
+    emit(state.copyWith(status: FormStatus.updated));
+    add(GetAllTasks());
+  }
+
+
+  deleteTask(DeleteTaskEvent event, emit) {
+    getIt<TaskRepository>().deleteItem(event.id);
     emit(state.copyWith(status: FormStatus.updated));
     add(GetAllTasks());
   }
