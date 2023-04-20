@@ -2,8 +2,15 @@ part of 'add_task_bloc.dart';
 
 @immutable
 class AddTaskState extends Equatable{
+  TaskModel newTask;
+
+  AddTaskState(this.newTask);
+
+  copyWith({
+    TaskModel? taskModel
+})=>AddTaskState(taskModel??newTask);
+
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [newTask];
 }
 
