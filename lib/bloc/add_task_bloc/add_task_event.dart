@@ -16,3 +16,5 @@ class UpdateTaskEvent extends AddTaskEvent{
     this.title
 });
 }
+
+class AddCurrentTaskEvent extends AddTaskEvent{}

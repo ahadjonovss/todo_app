@@ -53,6 +53,7 @@ class AddTaskWidget extends StatelessWidget {
                       const ChooseDateItem(),
                       SizedBox(height: height(context) * 0.06),
                       GlobalButton(title: "Add task", onTap:() {
+                        context.read<AddTaskBloc>().add(AddCurrentTaskEvent());
 
                       }, gradient:const  [
                         AppColors.c7EB6FF,

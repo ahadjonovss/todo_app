@@ -10,6 +10,8 @@ class TaskRepository{
 
   void addItem(TaskModel item) {
   _box.put(item.id, item);
+  print("Added");
+  print(getItems());
   }
 
   List<TaskModel> getItems() {

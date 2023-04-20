@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
-class TaskModel {
+class TaskModel  {
   final int id;
   final String title;
   final String category;
