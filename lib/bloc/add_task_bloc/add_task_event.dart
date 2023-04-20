@@ -7,7 +7,7 @@ class UpdateTaskEvent extends AddTaskEvent{
   int? id;
   String? title;
   String? type;
-  DateTime? time;
+  TimeOfDay? time;
 
   UpdateTaskEvent({
     this.time,

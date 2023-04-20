@@ -14,7 +14,10 @@ class ChooseDateItem extends StatelessWidget {
               style: AppTextStyles.headlineMedium(context, fontSize: 16.h, color: AppColors.c404040)),
           ZoomTapAnimation(
             onTap: () {
-              showTimePicker(context: context, initialTime: TimeOfDay.now());
+              showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+              ).then((value) => context.read<AddTaskBloc>().add(UpdateTaskEvent(time: value)));
             },
               child: const Text("some"))
         ],

@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+
 class TaskModel {
   final int id;
   final String title;
   final String category;
-  final DateTime time;
+  final TimeOfDay time;
 
   TaskModel(
       {required this.title,
@@ -28,6 +30,6 @@ class TaskModel {
      int? id,
      String? title,
      String? type,
-     DateTime? time
+     TimeOfDay? time
 })=>TaskModel(title: title??this.title, id: id??this.id, category: type??category, time: time??this.time);
 }
