@@ -1,7 +1,7 @@
 import 'package:todo_app/utils/tools/file_importer.dart';
 
-class CloseButton extends StatelessWidget {
-  const CloseButton({Key? key}) : super(key: key);
+class CustomCloseButton extends StatelessWidget {
+  const CustomCloseButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
