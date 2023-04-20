@@ -7,6 +7,7 @@ part 'tasks_state.dart';
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
   TasksBloc() : super(TasksState(tasks: [], message: '', status: FormStatus.pure)) {
     on<GetAllTasks>(getAllTasks);
+    on<UpdateCurrentTaskEvent>(updateTask);
   }
 
 
@@ -18,5 +19,12 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
    }else{
      emit(state.copyWith(status: FormStatus.fail,message: myResponse.errorMessage));
    }
+  }
+
+
+  updateTask(UpdateCurrentTaskEvent event,emit){
+    getIt<TaskRepository>().updateItem(event.task);
+    emit(state.copyWith(status: FormStatus.updated));
+    add(GetAllTasks());
   }
 }

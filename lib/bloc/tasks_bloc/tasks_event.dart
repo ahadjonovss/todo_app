@@ -4,3 +4,7 @@ part of 'tasks_bloc.dart';
 abstract class TasksEvent {}
 
 class GetAllTasks extends TasksEvent{}
+class UpdateCurrentTaskEvent extends TasksEvent{
+  TaskModel task;
+  UpdateCurrentTaskEvent(this.task);
+}

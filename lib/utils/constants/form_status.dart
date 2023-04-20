@@ -2,5 +2,7 @@ enum FormStatus{
   pure,
   getting,
   fail,
-  success
+  success,
+  updated,
+  deleted
 }
