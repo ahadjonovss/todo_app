@@ -10,8 +10,16 @@ class TaskRepository{
 
   void addItem(TaskModel item) {
   _box.put(item.id, item);
-  print("Added");
-  print(getItems());
+  DateTime dateTime = DateTime.now();
+
+  // DateTime timeOnly = DateTime(dateTime.year, dateTime.month, dateTime.day,
+  //     item.time.hour, item.time.minute);
+
+  // Duration difference = timeOnly.difference(dateTime);
+  // int differenceInSeconds = difference.inSeconds;
+  // print("Manaaa $differenceInSeconds");
+  // getIt<LocalNotificationService>().scheduleNotification(id: item.id, delayedTime: differenceInSeconds);
+
   }
 
   List<TaskModel> getItems() {

@@ -4,6 +4,7 @@ void main() async {
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(TaskAdapter());
+
   setup();
   Bloc.observer = AppBlocObserver();
   runApp( App());
