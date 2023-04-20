@@ -6,7 +6,7 @@ part 'tasks_state.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
   TasksBloc() : super(TasksState(tasks: [], message: '', status: FormStatus.pure)) {
-    on<TasksEvent>(getAllTasks);
+    on<GetAllTasks>(getAllTasks);
   }
 
 

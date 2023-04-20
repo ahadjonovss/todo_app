@@ -1,7 +1,8 @@
 import '../../../utils/tools/file_importer.dart';
 
 class TasksView extends StatelessWidget {
-  const TasksView({Key? key}) : super(key: key);
+  List<TaskModel> tasks;
+   TasksView({required this.tasks,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class TasksView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Today",style: AppTextStyles.headlineMedium(context),),
-          ...List.generate(5, (index) => TaskItem())
+          ...List.generate(tasks.length, (index) => TaskItem(task: tasks[index],))
         ],
       ),
     );

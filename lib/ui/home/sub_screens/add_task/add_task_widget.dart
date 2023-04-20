@@ -1,3 +1,4 @@
+import 'package:todo_app/bloc/tasks_bloc/tasks_bloc.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -53,7 +54,9 @@ class AddTaskWidget extends StatelessWidget {
                       const ChooseDateItem(),
                       SizedBox(height: height(context) * 0.06),
                       GlobalButton(title: "Add task", onTap:() {
+                        Navigator.pop(context);
                         context.read<AddTaskBloc>().add(AddCurrentTaskEvent());
+                        context.read<TasksBloc>().add(GetAllTasks());
 
                       }, gradient:const  [
                         AppColors.c7EB6FF,
