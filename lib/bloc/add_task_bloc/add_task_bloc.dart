@@ -9,11 +9,11 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
       mustNotify: true,
       time: TimeOfDay.now(),
       category: '',day: DateTime.now()))) {
-    on<UpdateTaskEvent>(updateTaskInfo);
+    on<UpdateTaskInformationEvent>(updateTaskInfo);
     on<AddCurrentTaskEvent>(addTask);
   }
 
-  updateTaskInfo(UpdateTaskEvent event, emit) {
+  updateTaskInfo(UpdateTaskInformationEvent event, emit) {
     emit(state.copyWith(taskModel: state.newTask.copyWith(type: event.type,time: event.time,id: event.id,title: event.title)));
   }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:todo_app/bloc/update_task_bloc/update_task_bloc.dart';
+import 'package:todo_app/ui/home/widgets/update_task_bottom_sheet.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class TaskItem extends StatelessWidget {
@@ -17,15 +19,34 @@ class TaskItem extends StatelessWidget {
         motion: const ScrollMotion(),
         children: [
          SizedBox(width: width(context)*0.04,),
-          Container(
-            height: height(context)*0.05,
-            alignment: Alignment.center,
-            width: height(context)*0.05,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xFFC4CEF5)
+          ZoomTapAnimation(
+            onTap: () {
+              context.read<UpdateTaskBloc>().add(UpdateTaskInfoEvent(
+                time: task.time,
+                type: task.category,));
+              showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  isDismissible: false,
+                  enableDrag: true,
+                  isScrollControlled: true,
+                  constraints: BoxConstraints(
+                      minHeight: height(context)*0.55
+                  ),
+                  context: context, builder: (context) => Padding(
+                padding:EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                child:  UpdateTaskBottomSheet(task: task),
+              ));
+            },
+            child: Container(
+              height: height(context)*0.05,
+              alignment: Alignment.center,
+              width: height(context)*0.05,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xFFC4CEF5)
+              ),
+              child: SvgPicture.asset(AppIcons.edit,fit: BoxFit.cover,),
             ),
-            child: SvgPicture.asset(AppIcons.edit,fit: BoxFit.cover,),
           ),
           SizedBox(width: width(context)*0.01,),
           Container(

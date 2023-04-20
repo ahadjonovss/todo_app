@@ -1,7 +1,8 @@
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class ChooseDateItem extends StatelessWidget {
-  const ChooseDateItem({Key? key}) : super(key: key);
+  dynamic state;
+  ChooseDateItem({this.state,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,9 @@ class ChooseDateItem extends StatelessWidget {
                       initialTime: TimeOfDay.now(),
                     ).then((value) =>
                         context.read<AddTaskBloc>().add(
-                            UpdateTaskEvent(time: value)));
+                            UpdateTaskInformationEvent(time: value)));
                   },
-                  child:  Text("Today, ${state.newTask.time.hour} : ${state.newTask.time.minute}",style: AppTextStyles.headlineMediumBold(context,fontWeight: FontWeight.w700,fontSize: 18),))
+                  child:  Text("Today, ${getTime(state.newTask.time)}",style: AppTextStyles.headlineMediumBold(context,fontWeight: FontWeight.w700,fontSize: 18),))
             ],
           ),
         );

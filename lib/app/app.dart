@@ -1,3 +1,4 @@
+import 'package:todo_app/bloc/update_task_bloc/update_task_bloc.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class App extends StatelessWidget {
@@ -10,6 +11,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => TabBoxBloc(),),
         BlocProvider(create: (context) => AddTaskBloc(),),
+        BlocProvider(create: (context) => UpdateTaskBloc(),),
         BlocProvider(create: (context) => TasksBloc()..add(GetAllTasks()),),
 
       ],

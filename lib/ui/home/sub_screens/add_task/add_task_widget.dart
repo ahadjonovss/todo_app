@@ -1,4 +1,3 @@
-import 'package:todo_app/bloc/tasks_bloc/tasks_bloc.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -40,7 +39,7 @@ class AddTaskWidget extends StatelessWidget {
                           width: width(context),
                           child: TextField(
                             onChanged: (value) {
-                              context.read<AddTaskBloc>().add(UpdateTaskEvent(title: value));
+                              context.read<AddTaskBloc>().add(UpdateTaskInformationEvent(title: value));
                             },
                             style: AppTextStyles.headlineLarge(context,
                                 color: AppColors.c373737),
@@ -48,10 +47,10 @@ class AddTaskWidget extends StatelessWidget {
                                 border: InputBorder.none, hintText: "Type..."))),
                       SizedBox(height: height(context) * 0.01),
                       const Divider(color: AppColors.cCFCFCF),
-                      const CategoriesView(),
+                      CategoriesView(isUpdate: false,state: state,),
                       const Divider(color: AppColors.cCFCFCF),
                       SizedBox(height: height(context) * 0.02),
-                      const ChooseDateItem(),
+                      ChooseDateItem(state: state,),
                       SizedBox(height: height(context) * 0.06),
                       GlobalButton(title: "Add task", onTap:() {
                         Navigator.pop(context);

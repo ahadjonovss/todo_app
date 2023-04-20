@@ -3,13 +3,13 @@ part of 'add_task_bloc.dart';
 @immutable
 abstract class AddTaskEvent {}
 
-class UpdateTaskEvent extends AddTaskEvent{
+class UpdateTaskInformationEvent extends AddTaskEvent{
   int? id;
   String? title;
   String? type;
   TimeOfDay? time;
 
-  UpdateTaskEvent({
+  UpdateTaskInformationEvent({
     this.time,
     this.type,
     this.id,

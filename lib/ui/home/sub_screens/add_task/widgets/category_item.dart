@@ -3,14 +3,13 @@ import 'package:todo_app/utils/tools/file_importer.dart';
 class CategoryItem extends StatelessWidget {
   CategoryModel category;
   bool isSelected;
-  CategoryItem({required this.isSelected,required this.category,Key? key}) : super(key: key);
+  VoidCallback onTap;
+  CategoryItem({required this.onTap, required this.isSelected,required this.category,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
-      onTap: () {
-        context.read<AddTaskBloc>().add(UpdateTaskEvent(type: category.title));
-      },
+      onTap: onTap,
       child: AnimatedContainer(
         duration: const  Duration(seconds: 1),
         margin: const EdgeInsets.only(right: 6),
