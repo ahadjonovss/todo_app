@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:todo_app/bloc/update_task_bloc/update_task_bloc.dart';
-import 'package:todo_app/ui/home/widgets/update_task_bottom_sheet.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class TaskItem extends StatelessWidget {
