@@ -16,7 +16,7 @@ class AppRoutes {
       case RouteName.splash:
         return MaterialPageRoute(builder: (_) => const SplashPage());
       case RouteName.tasks:
-        return MaterialPageRoute(builder: (_) =>  TasksPage(category: arguments as CategoryModel,));
+        return MaterialPageRoute(builder: (_) =>  TasksPage(index: arguments as int,));
       case RouteName.main:
         return MaterialPageRoute(builder: (_) =>  MainPage());
       case RouteName.onBoarding:

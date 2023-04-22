@@ -26,18 +26,11 @@ class CategoriesPage extends StatelessWidget {
                       style: AppTextStyles.headlineMedium(context),
                     ),
                   ),
-                  GridView.count(
-                    shrinkWrap: true,
-                    primary: false,
-                    crossAxisCount: 2,
-                    children: [
-                      ...List.generate(
-                        state.categories.length,
-                            (index) =>
-                            CategoryWidget(category: state.categories[index]),
-                      )
-                    ],
-                  ),
+            GridView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(18).r, physics: const BouncingScrollPhysics(), gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( crossAxisCount: 2, childAspectRatio: 0.99, mainAxisSpacing: 12, crossAxisSpacing: 28, ), children:
+            List.generate( state.categories.length, (index) => CategoryWidget(index: index), ),),
+
                 ],
               ),
             ),

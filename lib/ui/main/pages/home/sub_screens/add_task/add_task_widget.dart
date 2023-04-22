@@ -13,7 +13,7 @@ class AddTaskWidget extends StatelessWidget {
             Navigator.pop(context);
           }else if(state.status==FormStatus.fail){
             AnimatedSnackBar.material(
-              state.newTask.time==TimeOfDay.now()?"Select another time to remind!":'Fill all fields!',
+              state.newTask.time==TimeOfDay.now() ?"Select another time to remind!":'Fill all fields!',
               type: AnimatedSnackBarType.error,
               mobileSnackBarPosition: MobileSnackBarPosition.top,
               desktopSnackBarPosition: DesktopSnackBarPosition.topRight,
