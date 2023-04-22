@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:todo_app/utils/tools/file_importer.dart';
 
 class TasksPage extends StatefulWidget {
   const TasksPage({Key? key}) : super(key: key);
@@ -10,6 +10,12 @@ class TasksPage extends StatefulWidget {
 class _TasksPageState extends State<TasksPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Column(
+        children: [
+          CustomAppBar(tasks:context.read<TasksBloc>().state.tasks[0]),
+        ],
+      ),
+    );
   }
 }
