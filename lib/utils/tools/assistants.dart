@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_app/data/models/category_model.dart';
 
 CategoryModel detectCategory(String title){
@@ -18,4 +19,20 @@ String getTime(TimeOfDay time){
   String minuteRes = minute<10?"0$minute":minute.toString();
 
   return "$hourRes : $minuteRes";
+}
+
+String getDay(String dateTimeString){
+ if(dateTimeString==DateTime.now().toString().split(' ').first){
+   return "Today";
+ }else if(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day).subtract(const Duration(days: 1)).toString().split(' ').first==dateTimeString){
+   return "Yesterday";
+ }
+ else{
+   DateTime dateTime = DateTime.parse(dateTimeString);
+   String weekDay = DateFormat('EEEE').format(dateTime);
+   String monthName = DateFormat('MMMM').format(dateTime);
+   return "${dateTime.day} - $monthName, $weekDay";
+ }
+
+
 }

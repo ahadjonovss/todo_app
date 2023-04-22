@@ -11,20 +11,20 @@ class TaskRepository{
   }
 
   updateBox(String boxName) async {
-    _box = await Hive.openBox<TaskModel>(boxName);
+    print("Box has been updated");
+    return await Hive.openBox<TaskModel>(boxName);
   }
 
-  void addItem(TaskModel item) {
-    updateBox(item.boxName);
+  void addItem(TaskModel item) async {
+    var box = await updateBox(item.boxName);
     item.id = _box.values.length+1;
-  _box.put(item.id, item);
+  box.put(item.id, item);
    setNotification(item);
 
   }
 
   Future<MyResponse> getItems() async {
     MyResponse myResponse = MyResponse(tasks: []);
-    List<List<TaskModel>> tasks;
     try{
       List keys = getIt<KeysRepository>().getKeys();
       for(var i in keys){
@@ -38,14 +38,16 @@ class TaskRepository{
   }
 
 
-  void updateItem(TaskModel item) {
-    updateBox(item.boxName);
-    _box.put(item.id, item);
+  void updateItem(TaskModel item) async {
+    var box = await updateBox(item.boxName);
+    print("Mana box $box");
+    box.put(item.id, item);
   }
 
-  void deleteItem(TaskModel item) {
-    updateBox(item.boxName);
-    _box.delete(item.id);
+  void deleteItem(TaskModel item) async {
+    var box = await updateBox(item.boxName);
+    box.delete(item.id);
+    print("deleted");
   }
 
   int getDifference(TaskModel item){

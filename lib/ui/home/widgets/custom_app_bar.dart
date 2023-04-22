@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(seconds: 1),
-        height: context.read<TasksBloc>().state.needShowTaskBar?height(context)*0.3:height(context)*0.15,
+        height: context.read<TasksBloc>().state.needShowTaskBar && tasks.isNotEmpty?height(context)*0.3:height(context)*0.15,
         width: width(context),
         decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget {
                       Text("Hello",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 22),),
                       Text("Today you have ${tasks.length} tasks",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 18),),
                       SizedBox(height: height(context)*0.02,),
-                      if(context.read<TasksBloc>().state.needShowTaskBar)
+                      if(context.read<TasksBloc>().state.needShowTaskBar && tasks.isNotEmpty)
                         Container(
                           height: height(context)*0.12,
                           width: width(context),

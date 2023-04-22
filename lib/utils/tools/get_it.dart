@@ -12,7 +12,7 @@ Future<void> setup() async {
 
   await getIt<SplashRepository>().openBox();
   await getIt<KeysRepository>().openBox();
-  await getIt<TaskRepository>().openBox("2023-04-21");
+  await getIt<TaskRepository>().openBox(key);
 
 
 

@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import '../../../utils/tools/file_importer.dart';
 
 class TasksView extends StatelessWidget {
@@ -6,17 +8,16 @@ class TasksView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-
+    return tasks.isNotEmpty?Container(
       width: width(context),
       padding: const EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Today",style: AppTextStyles.headlineMedium(context),),
+          Text(getDay(tasks[0].boxName),style: AppTextStyles.headlineMedium(context),),
           ...List.generate(tasks.length, (index) => TaskItem(task: tasks[index],))
         ],
       ),
-    );
+    ):SizedBox();
   }
 }
