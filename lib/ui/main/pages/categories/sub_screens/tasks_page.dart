@@ -1,8 +1,8 @@
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class TasksPage extends StatelessWidget {
-  List<List<TaskModel>> tasks;
-   TasksPage({required this.tasks,Key? key}) : super(key: key);
+  CategoryModel category;
+   TasksPage({required this.category,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,10 @@ class TasksPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children:  [
-              CustomAppBar(tasks:tasks[0]),
-              if(tasks.first.isNotEmpty)
-                ...List.generate(tasks.length, (index) => TasksView(tasks: tasks[index],)),
-              if(tasks.first.isEmpty)
+              CustomAppBar(tasks:category.tasks,title: "You have ${category.tasks.length} tasks for ${category.title}",),
+              if(category.tasks.isNotEmpty)
+                TasksView(tasks: category.tasks),
+              if(category.tasks.isEmpty)
                 SizedBox(
                     height: height(context)*0.7,
                     child: Column(

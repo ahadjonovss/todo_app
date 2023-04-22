@@ -2,7 +2,8 @@ import 'package:todo_app/utils/tools/file_importer.dart';
 
 class CustomAppBar extends StatelessWidget {
   List<TaskModel> tasks;
-  CustomAppBar({required this.tasks,Key? key}) : super(key: key);
+  String? title;
+  CustomAppBar({this.title,required this.tasks,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class CustomAppBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Hello",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 22),),
-                      Text("Today you have ${tasks.length} tasks",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 18),),
+                      Text(title??"Today you have ${tasks.length} tasks",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 18),),
                       SizedBox(height: height(context)*0.02,),
                       if(context.read<TasksBloc>().state.needShowTaskBar && tasks.isNotEmpty)
                         Container(

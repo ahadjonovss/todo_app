@@ -8,7 +8,7 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
       onTap: () {
-        Navigator.pushNamed(context, RouteName.tasks,arguments: category.tasks);
+        Navigator.pushNamed(context, RouteName.tasks,arguments: category);
       },
       child: Container(
         margin: EdgeInsets.all(height(context)*0.02),
