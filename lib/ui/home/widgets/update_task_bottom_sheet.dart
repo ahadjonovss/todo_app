@@ -52,9 +52,9 @@ class UpdateTaskBottomSheet extends StatelessWidget {
                 CategoriesView(isUpdate: true,state: state,),
                 const Divider(color: AppColors.cCFCFCF),
                 SizedBox(height: height(context) * 0.02),
-                ChooseDateItem(state: state),
+                ChooseDateItem(state: state,isUpdate: true),
                 SizedBox(height: height(context) * 0.06),
-                GlobalButton(title: "Add task", onTap:() {
+                GlobalButton(title: "Update task", onTap:() {
                   Navigator.pop(context);
                   context.read<UpdateTaskBloc>().add(UpdateInfoOfCurrentTaskEvent(state.newTask));
                   context.read<TasksBloc>().add(GetAllTasks());

@@ -63,7 +63,7 @@ class AddTaskWidget extends StatelessWidget {
                       CategoriesView(isUpdate: false,state: state,),
                       const Divider(color: AppColors.cCFCFCF),
                       SizedBox(height: height(context) * 0.02),
-                      ChooseDateItem(state: state,),
+                      ChooseDateItem(state: state,isUpdate: false),
                       SizedBox(height: height(context) * 0.06),
                       GlobalButton(title: "Add task", onTap:() {
                         context.read<AddTaskBloc>().add(AddCurrentTaskEvent());
