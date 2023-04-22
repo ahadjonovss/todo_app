@@ -7,7 +7,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List pages = [
       HomePage(),
-      TasksPage()
+      CategoriesPage()
     ];
     return Scaffold(
       floatingActionButton: FloatingActionButton(
