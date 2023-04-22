@@ -54,3 +54,4 @@ export 'package:todo_app/ui/main/widgets/custom_app_bar.dart';
 export 'package:todo_app/ui/main/widgets/tasks_view.dart';
 export 'package:todo_app/ui/main/pages/home/widgets/update_task_bottom_sheet.dart';
 export 'package:todo_app/ui/main/widgets/custom_dialog.dart';
+export 'package:todo_app/ui/main/pages/home/sub_screens/add_task/widgets/category_item.dart';
