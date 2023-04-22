@@ -13,8 +13,13 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomAppBar(tasks:context.read<TasksBloc>().state.tasks[0]),
+          Padding(
+            padding:  EdgeInsets.all(height(context)*0.02),
+            child: Text("Projects",style: AppTextStyles.headlineMedium(context),),
+          ),
           Expanded(
             child: GridView.count(crossAxisCount: 2,
             children: [
