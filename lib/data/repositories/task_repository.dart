@@ -69,4 +69,21 @@ class TaskRepository{
   }
 
 
+   getTasksByCategory(List<List<TaskModel>> tasks){
+    List<CategoryModel> filledCategories=[];
+    for(CategoryModel category in categories){
+      for(var i in tasks){
+        for(TaskModel j in i){
+          if(category.title==j.category){
+            category.tasks.add(j);
+          }
+        }
+      }
+      filledCategories.add(category);
+    }
+    return filledCategories;
+
+  }
+
+
 }

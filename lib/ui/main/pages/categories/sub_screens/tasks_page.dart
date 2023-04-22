@@ -6,15 +6,17 @@ class TasksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height(context),
-      width: width(context),
-      child: SingleChildScrollView(
-        child: Column(
-          children:  [
-            CustomAppBar(tasks:tasks[0]),
-            ...List.generate(tasks.length, (index) => TasksView(tasks: tasks[index],))
-          ],
+    return Scaffold(
+      body: SizedBox(
+        height: height(context),
+        width: width(context),
+        child: SingleChildScrollView(
+          child: Column(
+            children:  [
+              CustomAppBar(tasks:tasks[0]),
+              ...List.generate(tasks.length, (index) => TasksView(tasks: tasks[index],))
+            ],
+          ),
         ),
       ),
     );

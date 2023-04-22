@@ -32,9 +32,9 @@ class CategoriesPage extends StatelessWidget {
                     crossAxisCount: 2,
                     children: [
                       ...List.generate(
-                        categories.length,
+                        state.categories.length,
                             (index) =>
-                            CategoryWidget(category: categories[index]),
+                            CategoryWidget(category: state.categories[index]),
                       )
                     ],
                   ),

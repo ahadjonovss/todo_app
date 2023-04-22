@@ -4,7 +4,7 @@ part 'tasks_event.dart';
 part 'tasks_state.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
-  TasksBloc() : super(TasksState(needShowTaskBar:true,tasks: [], message: '', status: FormStatus.pure)) {
+  TasksBloc() : super(TasksState(needShowTaskBar:true,tasks: [], message: '', status: FormStatus.pure,categories: [])) {
     on<GetAllTasks>(getAllTasks);
     on<UpdateCurrentTaskEvent>(updateTask);
     on<DeleteTaskEvent>(deleteTask);
@@ -16,7 +16,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
    emit(state.copyWith(status: FormStatus.getting));
    MyResponse myResponse = await getIt<TaskRepository>().getItems();
    if(myResponse.errorMessage.isEmpty){
-     emit(state.copyWith(status: FormStatus.success,tasks: myResponse.tasks));
+     emit(state.copyWith(status: FormStatus.success,tasks: myResponse.tasks,categories:  getIt<TaskRepository>().getTasksByCategory(myResponse.tasks)));
    }else{
      emit(state.copyWith(status: FormStatus.fail,message: myResponse.errorMessage));
    }
