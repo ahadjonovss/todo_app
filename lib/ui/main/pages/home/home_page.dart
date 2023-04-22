@@ -9,20 +9,32 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder<TasksBloc, TasksState>(
         builder: (context, state) {
          if(state.status==FormStatus.success){
-           return state.tasks.isNotEmpty?SizedBox(
+           return SizedBox(
              height: height(context),
              width: width(context),
              child: SingleChildScrollView(
                child: Column(
                  children:  [
-                    CustomAppBar(tasks:state.tasks[0]),
-                   ...List.generate(state.tasks.length, (index) => TasksView(tasks: state.tasks[index],))
+                   CustomAppBar(tasks:state.tasks[0]),
+                   if(state.tasks.first.isNotEmpty)
+                     ...List.generate(state.tasks.length, (index) => TasksView(tasks: state.tasks[index],)),
+                   if(state.tasks.first.isEmpty)
+                     SizedBox(
+                       height: height(context)*0.7,
+                         child: Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Center(child: SvgPicture.asset(AppIcons.noTask)),
+                             Text("No tasks",style: AppTextStyles.headlineMedium(context),),
+                           ],
+                         ))
+
 
 
                  ],
                ),
              ),
-           ):SvgPicture.asset(AppIcons.noTask);
+           );
          }
          else{
            return const CircularProgressIndicator();

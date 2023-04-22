@@ -14,7 +14,20 @@ class TasksPage extends StatelessWidget {
           child: Column(
             children:  [
               CustomAppBar(tasks:tasks[0]),
-              ...List.generate(tasks.length, (index) => TasksView(tasks: tasks[index],))
+              if(tasks.first.isNotEmpty)
+                ...List.generate(tasks.length, (index) => TasksView(tasks: tasks[index],)),
+              if(tasks.first.isEmpty)
+                SizedBox(
+                    height: height(context)*0.7,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(child: SvgPicture.asset(AppIcons.noTask)),
+                        Text("No tasks",style: AppTextStyles.headlineMedium(context),),
+                      ],
+                    ))
+
+
             ],
           ),
         ),
