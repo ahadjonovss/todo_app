@@ -73,7 +73,7 @@ class TaskItem extends StatelessWidget {
         ],
       ),
       child: ZoomTapAnimation(
-        onLongTap: () {
+        onTap: () {
           showCupertinoDialog(context: context, builder: (context) => CustomDialog(task: task.title,title: task.isFinished?"Have not finished this task?":"Have you finished this task?",onYesTapped: () {
             context.read<TasksBloc>().add(UpdateCurrentTaskEvent(task.copyWith(isFinished: task.isFinished?false:true)));
           },),);
