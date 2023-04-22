@@ -1,4 +1,3 @@
-import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -16,8 +15,8 @@ class AddTaskWidget extends StatelessWidget {
             AnimatedSnackBar.material(
               'Fill all fields!',
               type: AnimatedSnackBarType.error,
-              mobileSnackBarPosition: MobileSnackBarPosition.top, // Position of snackbar on mobile devices
-              desktopSnackBarPosition: DesktopSnackBarPosition.topRight, // Position of snackbar on desktop devices
+              mobileSnackBarPosition: MobileSnackBarPosition.top,
+              desktopSnackBarPosition: DesktopSnackBarPosition.topRight,
             ).show(context);
           }
         },

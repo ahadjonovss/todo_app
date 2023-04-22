@@ -1,5 +1,3 @@
-import 'package:todo_app/bloc/tasks_bloc/tasks_bloc.dart';
-import 'package:todo_app/ui/home/widgets/tasks_view.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class HomePage extends StatelessWidget {
