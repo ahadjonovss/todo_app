@@ -7,7 +7,8 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
+        curve: Curves.linearToEaseOut,
         height: context.read<TasksBloc>().state.needShowTaskBar && tasks.isNotEmpty?height(context)*0.3:height(context)*0.15,
         width: width(context),
         decoration: const BoxDecoration(
