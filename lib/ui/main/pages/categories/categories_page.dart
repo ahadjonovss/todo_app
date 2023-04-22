@@ -1,3 +1,4 @@
+import 'package:todo_app/ui/main/pages/categories/widgets/category_widget.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -14,27 +15,11 @@ class _CategoriesPageState extends State<CategoriesPage> {
       body: Column(
         children: [
           CustomAppBar(tasks:context.read<TasksBloc>().state.tasks[0]),
-          GridView.builder(
-            itemCount: 10,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                color: Colors.blue,
-                child: Center(
-                  child: Text(
-                    'Item $index',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-                ),
-              );
-            },
-          )
-
-
+          Expanded(
+            child: GridView.count(crossAxisCount: 2,
+            children: [
+              ...List.generate(categories.length, (index) => CategoryWidget(category: categories[index]))
+            ],),)
         ],
       ),
     );

@@ -1,12 +1,13 @@
 import 'package:todo_app/utils/tools/file_importer.dart';
 
-class CategoryItem extends StatelessWidget {
+class CategoryWidget extends StatelessWidget {
   CategoryModel category;
-  CategoryItem({required this.category,Key? key}) : super(key: key);
+  CategoryWidget({required this.category,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(height(context)*0.02),
       alignment: Alignment.center,
       padding: EdgeInsets.all(12.h),
       decoration: BoxDecoration(
