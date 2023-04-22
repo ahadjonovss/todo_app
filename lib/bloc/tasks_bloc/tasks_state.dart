@@ -2,7 +2,7 @@ part of 'tasks_bloc.dart';
 
 @immutable
 class TasksState extends Equatable {
-  List<TaskModel> tasks;
+  List<List<TaskModel>> tasks;
   String message;
   FormStatus status;
 
@@ -10,7 +10,7 @@ class TasksState extends Equatable {
       {required this.tasks, required this.message, required this.status});
 
   copyWith({
-    List<TaskModel>? tasks,
+    List<List<TaskModel>>? tasks,
     String? message,
     FormStatus? status,
   }) =>

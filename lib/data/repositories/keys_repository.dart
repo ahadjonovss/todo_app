@@ -6,6 +6,8 @@ class KeysRepository{
 
   Future<void> openBox() async {
     _box = await Hive.openBox<String>(_boxName);
+    debugPrint("keysBox has been opened");
+
   }
 
   void addKey(String key) {
@@ -13,11 +15,12 @@ class KeysRepository{
     if(!availableKeys.contains(key)){
       int id = _box.values.length+1;
       _box.put(id, key);
+      debugPrint("$key added to storage");
     }
   }
 
   List<String> getKeys() {
-    return _box.values.toList();
+     return _box.values.toList()..sort((a, b) => b.compareTo(a));
   }
 
 }

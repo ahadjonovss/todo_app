@@ -53,7 +53,7 @@ class TaskItem extends StatelessWidget {
             onTap: () {
               showCupertinoDialog(context: context, builder: (context) => CustomDialog(
                   title: "Are you sure to delete this task?", onYesTapped: () {
-                    context.read<TasksBloc>().add(DeleteTaskEvent(task.id));
+                    context.read<TasksBloc>().add(DeleteTaskEvent(task));
 
                   }, task: task.title),);
             },
@@ -101,7 +101,6 @@ class TaskItem extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
-                      SizedBox(width: width(context)*0.01,),
                       AnimatedContainer(
                         duration: const Duration(seconds: 1),
                         height: height(context)*0.024,

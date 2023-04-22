@@ -17,8 +17,8 @@ class HomePage extends StatelessWidget {
              child: SingleChildScrollView(
                child: Column(
                  children:  [
-                   CustomAppBar(),
-                   TasksView(tasks: state.tasks,)
+                   const CustomAppBar(),
+                   ...List.generate(state.tasks.length, (index) => TasksView(tasks: state.tasks[index],))
 
 
                  ],

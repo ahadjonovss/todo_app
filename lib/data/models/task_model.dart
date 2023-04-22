@@ -9,10 +9,12 @@ class TaskModel {
   final DateTime day;
   final bool isFinished;
   final bool mustNotify;
+  final String boxName;
 
   TaskModel(
       {required this.title,
       required this.id,
+       required  this.boxName ,
       required this.isFinished,
       required this.mustNotify,
       required this.day,
@@ -25,9 +27,11 @@ class TaskModel {
           String? type,
           TimeOfDay? time,
           bool? isFinished,
+            String? boxName,
           bool? mustNotify,
           DateTime? day}) =>
       TaskModel(
+        boxName: boxName??this.boxName,
           title: title ?? this.title,
           id: id ?? this.id,
           category: type ?? category,

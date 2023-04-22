@@ -11,9 +11,9 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   }
 
 
-  getAllTasks(event, emit) {
+  getAllTasks(event, emit) async {
    emit(state.copyWith(status: FormStatus.getting));
-   MyResponse myResponse = getIt<TaskRepository>().getItems();
+   MyResponse myResponse = await getIt<TaskRepository>().getItems();
    if(myResponse.errorMessage.isEmpty){
      emit(state.copyWith(status: FormStatus.success,tasks: myResponse.tasks));
    }else{
@@ -35,7 +35,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
 
 
   deleteTask(DeleteTaskEvent event, emit) {
-    getIt<TaskRepository>().deleteItem(event.id);
+    getIt<TaskRepository>().deleteItem(event.task);
     emit(state.copyWith(status: FormStatus.updated));
     add(GetAllTasks());
   }

@@ -1,37 +1,51 @@
-import 'package:todo_app/data/models/my_response.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class TaskRepository{
-  static const String _boxName = 'todoBox';
+  static late final String _boxName;
   late Box<TaskModel> _box;
 
-  Future<void> openBox() async {
+  Future<void> openBox(String boxName) async {
+    _boxName = boxName;
+    getIt<KeysRepository>().addKey(boxName);
   _box = await Hive.openBox<TaskModel>(_boxName);
   }
 
+  updateBox(String boxName) async {
+    _box = await Hive.openBox<TaskModel>(boxName);
+  }
+
   void addItem(TaskModel item) {
+    updateBox(item.boxName);
     item.id = _box.values.length+1;
   _box.put(item.id, item);
    setNotification(item);
 
   }
 
-  MyResponse getItems() {
-    MyResponse myResponse = MyResponse();
+  Future<MyResponse> getItems() async {
+    MyResponse myResponse = MyResponse(tasks: []);
+    List<List<TaskModel>> tasks;
     try{
-      myResponse.tasks = _box.values.toList();
+      List keys = getIt<KeysRepository>().getKeys();
+      for(var i in keys){
+        var myBox = await Hive.openBox<TaskModel>(i);
+        myResponse.tasks.add(myBox.values.toList());
+      }
     }catch(e){
       myResponse.errorMessage=e.toString();
     }
     return myResponse;
   }
 
+
   void updateItem(TaskModel item) {
-  _box.put(item.id, item);
+    updateBox(item.boxName);
+    _box.put(item.id, item);
   }
 
-  void deleteItem(int id) {
-  _box.delete(id);
+  void deleteItem(TaskModel item) {
+    updateBox(item.boxName);
+    _box.delete(item.id);
   }
 
   int getDifference(TaskModel item){

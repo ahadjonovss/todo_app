@@ -8,6 +8,7 @@ class UpdateTaskBloc extends Bloc<UpdateTaskEvent, UpdateTaskState> {
   UpdateTaskBloc() : super(UpdateTaskState(TaskModel(title: '',id: 0,
       isFinished: false,
       mustNotify: true,
+      boxName: DateTime.now().toString().split(' ').first,
       time: TimeOfDay.now(),
       category: '',day: DateTime.now()))) {
     on<UpdateTaskInfoEvent>(updateTaskInfo);

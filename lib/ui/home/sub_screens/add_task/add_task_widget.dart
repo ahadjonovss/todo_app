@@ -1,3 +1,4 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class AddTaskWidget extends StatelessWidget {
@@ -7,7 +8,19 @@ class AddTaskWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddTaskBloc(),
-      child: BlocBuilder<AddTaskBloc, AddTaskState>(
+      child: BlocConsumer<AddTaskBloc, AddTaskState>(
+        listener: (context, state) {
+          if(state.status==FormStatus.success){
+            Navigator.pop(context);
+          }else if(state.status==FormStatus.fail){
+            AnimatedSnackBar.material(
+              'Fill all fields!',
+              type: AnimatedSnackBarType.error,
+              mobileSnackBarPosition: MobileSnackBarPosition.top, // Position of snackbar on mobile devices
+              desktopSnackBarPosition: DesktopSnackBarPosition.topRight, // Position of snackbar on desktop devices
+            ).show(context);
+          }
+        },
         builder: (context, state) {
           return Stack(
             clipBehavior: Clip.none,
@@ -53,7 +66,6 @@ class AddTaskWidget extends StatelessWidget {
                       ChooseDateItem(state: state,),
                       SizedBox(height: height(context) * 0.06),
                       GlobalButton(title: "Add task", onTap:() {
-                        Navigator.pop(context);
                         context.read<AddTaskBloc>().add(AddCurrentTaskEvent());
                         context.read<TasksBloc>().add(GetAllTasks());
 

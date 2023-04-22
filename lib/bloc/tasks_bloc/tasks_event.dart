@@ -10,6 +10,6 @@ class UpdateCurrentTaskEvent extends TasksEvent{
 }
 
 class DeleteTaskEvent extends TasksEvent{
-  int id;
-  DeleteTaskEvent(this.id);
+  TaskModel task;
+  DeleteTaskEvent(this.task);
 }

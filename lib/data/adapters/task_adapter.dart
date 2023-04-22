@@ -9,6 +9,7 @@ class TaskAdapter extends TypeAdapter<TaskModel>{
     final id = reader.readInt();
     final title = reader.readString();
     final category = reader.readString();
+    final boxName = reader.readString();
     final hour = reader.readInt();
     final minute = reader.readInt();
     final day = DateTime.parse(reader.readString());
@@ -19,6 +20,7 @@ class TaskAdapter extends TypeAdapter<TaskModel>{
       title: title,
       category: category,
       time: TimeOfDay(hour: hour,minute: minute),
+      boxName: boxName,
       day: day,
     isFinished: isFinished,
     mustNotify: mustNotify
@@ -30,6 +32,7 @@ class TaskAdapter extends TypeAdapter<TaskModel>{
     writer.writeInt(obj.id);
     writer.writeString(obj.title);
     writer.writeString(obj.category);
+    writer.writeString(obj.boxName);
     writer.writeInt(obj.time.hour);
     writer.writeInt(obj.time.minute);
     writer.writeString(obj.day.toString());

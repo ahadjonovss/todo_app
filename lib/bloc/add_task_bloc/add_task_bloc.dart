@@ -4,11 +4,17 @@ part 'add_task_event.dart';
 part 'add_task_state.dart';
 
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
-  AddTaskBloc() : super(AddTaskState(TaskModel(title: '',id: 0,
+  AddTaskBloc() : super(AddTaskState(
+
+      TaskModel(title: '',id: 0,
       isFinished: false,
       mustNotify: true,
+      boxName: DateTime.now().toString().split(' ').first,
       time: TimeOfDay.now(),
-      category: '',day: DateTime.now()))) {
+      category: '',day: DateTime.now()),
+    status: FormStatus.pure
+  )
+  ) {
     on<UpdateTaskInformationEvent>(updateTaskInfo);
     on<AddCurrentTaskEvent>(addTask);
   }
@@ -18,6 +24,12 @@ class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   }
 
   addTask( event, emit){
-    getIt<TaskRepository>().addItem(state.newTask);
+    if(state.newTask.title.isNotEmpty && state.newTask.time!=TimeOfDay.now() && state.newTask.category.isNotEmpty ){
+      getIt<TaskRepository>().addItem(state.newTask);
+      emit(state.copyWith(status: FormStatus.success));
+    }else{
+      emit(state.copyWith(status: FormStatus.fail));
+      emit(state.copyWith(status: FormStatus.pure));
+    }
   }
 }
