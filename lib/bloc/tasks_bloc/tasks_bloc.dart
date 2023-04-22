@@ -4,10 +4,11 @@ part 'tasks_event.dart';
 part 'tasks_state.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
-  TasksBloc() : super(TasksState(tasks: [], message: '', status: FormStatus.pure)) {
+  TasksBloc() : super(TasksState(needShowTaskBar:true,tasks: [], message: '', status: FormStatus.pure)) {
     on<GetAllTasks>(getAllTasks);
     on<UpdateCurrentTaskEvent>(updateTask);
     on<DeleteTaskEvent>(deleteTask);
+    on<CloseReminderBanner>(closeReminder);
   }
 
 
@@ -38,5 +39,9 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     getIt<TaskRepository>().deleteItem(event.task);
     emit(state.copyWith(status: FormStatus.updated));
     add(GetAllTasks());
+  }
+
+  closeReminder(event, emit) {
+    emit(state.copyWith(needShowTaskBar: false));
   }
 }

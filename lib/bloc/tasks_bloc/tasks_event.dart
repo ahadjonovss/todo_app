@@ -13,3 +13,5 @@ class DeleteTaskEvent extends TasksEvent{
   TaskModel task;
   DeleteTaskEvent(this.task);
 }
+
+class CloseReminderBanner extends TasksEvent{}

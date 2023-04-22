@@ -1,13 +1,14 @@
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo_app/utils/tools/file_importer.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  List<TaskModel> tasks;
+  CustomAppBar({required this.tasks,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: height(context)*0.3,
+    return AnimatedContainer(
+      duration: const Duration(seconds: 1),
+        height: context.read<TasksBloc>().state.needShowTaskBar?height(context)*0.3:height(context)*0.15,
         width: width(context),
         decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -31,9 +32,10 @@ class CustomAppBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Hello",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 22),),
-                      Text("Today you have 9 tasks",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 18),),
+                      Text("Today you have ${tasks.length} tasks",style: AppTextStyles.headlineMedium(context,color: Colors.white,fontSize: 18),),
                       SizedBox(height: height(context)*0.02,),
-                      Container(
+                      if(context.read<TasksBloc>().state.needShowTaskBar)
+                        Container(
                           height: height(context)*0.12,
                           width: width(context),
                           padding: EdgeInsets.all(20.h),
@@ -50,18 +52,23 @@ class CustomAppBar extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Today Reminder",style: AppTextStyles.headlineLarge(context,color: Colors.white),),
-                                  Text("Meeting with client",style: AppTextStyles.headlineMediumBold(context,color: Colors.white),),
-                                  Text("13.00 PM",style: AppTextStyles.headlineSmall(context,color: Colors.white),),
+                                  Text(tasks[0].title,style: AppTextStyles.headlineMediumBold(context,color: Colors.white),),
+                                  Text("At ${getTime(tasks[0].time)}",style: AppTextStyles.headlineSmall(context,color: Colors.white),),
 
                                 ],
                               ),
                               Stack(
                                 children: [
+                                  SvgPicture.asset(AppIcons.bell),
                                   Positioned(
                                     right: 0,
-                                    child: SvgPicture.asset(AppIcons.close),
+                                    child: ZoomTapAnimation(
+                                        onTap: () {
+                                          context.read<TasksBloc>().add(CloseReminderBanner());
+                                          print("MAnAA");
+                                        },
+                                        child: SvgPicture.asset(AppIcons.close)),
                                   ),
-                                  SvgPicture.asset(AppIcons.bell),
 
                                 ],
                               )
