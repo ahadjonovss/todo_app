@@ -8,12 +8,14 @@ class UpdateTaskInfoEvent extends UpdateTaskEvent{
   String? title;
   String? type;
   TimeOfDay? time;
+  String? boxName;
 
   UpdateTaskInfoEvent({
     this.time,
     this.type,
     this.id,
-    this.title
+    this.title,
+    this.boxName,
   });
 }
 

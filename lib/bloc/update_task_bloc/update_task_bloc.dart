@@ -17,7 +17,7 @@ class UpdateTaskBloc extends Bloc<UpdateTaskEvent, UpdateTaskState> {
 
 
   updateTaskInfo(UpdateTaskInfoEvent event, emit) {
-    emit(state.copyWith(taskModel: state.newTask.copyWith(type: event.type,time: event.time,id: event.id,title: event.title)));
+    emit(state.copyWith(taskModel: state.newTask.copyWith(type: event.type,time: event.time,id: event.id,title: event.title,boxName: event.boxName)));
   }
 
   updateTask( event, emit){

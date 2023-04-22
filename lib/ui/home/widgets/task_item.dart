@@ -23,6 +23,8 @@ class TaskItem extends StatelessWidget {
               controller.text=task.title;
               context.read<UpdateTaskBloc>().add(UpdateTaskInfoEvent(
                 time: task.time,
+                boxName: task.boxName,
+                id: task.id,
                 type: task.category,));
               showModalBottomSheet(
                   backgroundColor: Colors.transparent,
