@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder<TasksBloc, TasksState>(
         builder: (context, state) {
          if(state.status==FormStatus.success){
-           return SizedBox(
+           return state.tasks.isNotEmpty?SizedBox(
              height: height(context),
              width: width(context),
              child: SingleChildScrollView(
@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
                  ],
                ),
              ),
-           );
+           ):SvgPicture.asset(AppIcons.noTask);
          }
          else{
            return const CircularProgressIndicator();
