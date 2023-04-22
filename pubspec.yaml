@@ -43,6 +43,7 @@ dependencies:
   animated_snack_bar: ^0.3.0
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
