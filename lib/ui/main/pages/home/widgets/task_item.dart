@@ -25,6 +25,7 @@ class TaskItem extends StatelessWidget {
                 time: task.time,
                 boxName: task.boxName,
                 id: task.id,
+                title: task.title,
                 type: task.category,));
               showModalBottomSheet(
                   backgroundColor: Colors.transparent,
