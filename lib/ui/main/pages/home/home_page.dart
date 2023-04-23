@@ -16,9 +16,9 @@ class HomePage extends StatelessWidget {
                child: Column(
                  children:  [
                    CustomAppBar(tasks:state.tasks[0]),
-                   if(state.tasks.first.isNotEmpty)
+                   if(!isListEmpty(state.tasks))
                      ...List.generate(state.tasks.length, (index) => TasksView(tasks: state.tasks[index],)),
-                   if(state.tasks.first.isEmpty)
+                   if(isListEmpty(state.tasks))
                      SizedBox(
                        height: height(context)*0.7,
                          child: Column(

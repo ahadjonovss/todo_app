@@ -27,8 +27,10 @@ class TaskRepository{
     MyResponse myResponse = MyResponse(tasks: []);
     try{
       List keys = getIt<KeysRepository>().getKeys();
+      print("Here is keys $keys");
       for(var i in keys){
         var myBox = await Hive.openBox<TaskModel>(i);
+        print("Here is data of $i ${myBox.values.toList()}");
         myResponse.tasks.add(myBox.values.toList());
       }
     }catch(e){

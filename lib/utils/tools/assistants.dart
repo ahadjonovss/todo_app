@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_app/data/models/category_model.dart';
+import 'package:todo_app/utils/tools/file_importer.dart';
 
 CategoryModel detectCategory(String title){
   for(int i=0;i<categories.length;i++){
@@ -34,5 +35,18 @@ String getDay(String dateTimeString){
    return "${dateTime.day} - $monthName, $weekDay";
  }
 
+
+
+
+}
+
+
+bool isListEmpty(List<List<TaskModel>> tasks){
+  for(List i in tasks){
+      if(i.isNotEmpty){
+        return false;
+      }
+  }
+  return true;
 
 }
